@@ -39,11 +39,11 @@
         </div>
         <div class="flip-card-back">
           <h3>Titolo: {{ title }} {{ name }} </h3> 
-          <h5>Titolo Originale: {{ originalTitle }} {{ original_name }}</h5>
-          <div v-if="languageFlag">
+          <h5 class="mb-3">Titolo Originale: {{ originalTitle }} {{ original_name }}</h5>
+          <div v-if="languageFlag" class="mb-2">
             <img :src="languageFlag" alt="Bandiera lingua">
           </div>
-          <div v-else>
+          <div v-else class="mb-2">
             <p> Lingua Originale: {{ original_language }}</p> 
           </div>
           <div class="stars">
@@ -55,7 +55,7 @@
                   :key="index">
                 </i>
                 <i
-                  :key="'empty_' + index"
+                  :key="'star' + index"
                   class="fa-regular fa-star"
                   v-else>
                 </i>

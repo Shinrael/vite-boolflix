@@ -18,7 +18,7 @@ import { store } from '../data/store'
   <main class="overflow-auto">
     <div class="container text-center">
       <h2  v-if="store.cardFilm.length === 0 & store.cardSeries.length === 0" class="text-danger">Comincia la tua ricerca!</h2>
-      <h2 v-if="store.cardFilm.length > 0">FILM</h2>
+      <h2 class="text-danger" v-if="store.cardFilm.length > 0">FILM</h2>
       <div class="row row-cols-4 pt-2">
         <Moviecard
           v-for="(movie,index) in store.cardFilm"
@@ -30,7 +30,7 @@ import { store } from '../data/store'
           :rate="movie.vote_average"
           />          
       </div>
-      <h2 v-if="store.cardSeries.length > 0">SERIE TV</h2>
+      <h2 class="text-danger" v-if="store.cardSeries.length > 0">SERIE TV</h2>
       <div class="row row-cols-4 pt-2">
         <Moviecard
           v-for="(tv,index) in store.cardSeries"
