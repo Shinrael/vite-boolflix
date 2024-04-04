@@ -47,12 +47,20 @@
             <p> Lingua Originale: {{ original_language }}</p> 
           </div>
           <div class="stars">
-           <p>Voto:
-            <i
-             class="fa-solid fa-star"
-             v-for="index in calculatedRate"
-             :key="index"
-             ></i></p>
+            <p>Voto:
+              <template v-for="index in 5">
+                <i
+                  class="fa-solid fa-star"
+                  v-if="index <= calculatedRate"
+                  :key="index">
+                </i>
+                <i
+                  :key="'empty_' + index"
+                  class="fa-regular fa-star"
+                  v-else>
+                </i>
+              </template>
+            </p>
           </div>
         </div>
       </div>
