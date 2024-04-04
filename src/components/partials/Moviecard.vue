@@ -3,6 +3,8 @@
     props:{
       originalTitle : String,
       title : String, 
+      original_name : String,
+      name: String,
       original_language : String,
       rate : Number,
       poster_path : String,
@@ -19,7 +21,8 @@
           <img :src="'https://image.tmdb.org/t/p/w300/' + poster_path" :alt="title">
         </div>
         <div class="flip-card-back">
-          <h1>{{ originalTitle }}</h1> 
+          <h1>{{ title }} {{ name }} </h1> 
+          <h3>{{ originalTitle }} {{ original_name }}</h3>
           <p>{{ original_language }}</p> 
           <p>{{ rate }}</p>
         </div>

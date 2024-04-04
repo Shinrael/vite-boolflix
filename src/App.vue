@@ -15,17 +15,32 @@ import Main from './components/Main.vue';
       }
     },
     methods:{
-      getApi(){
-        axios.get(this.store.apiUrl)
+      getApiMovies(){
+        axios.get(this.store.apiUrl + 'movie',{
+          params: store.apiParams
+        })
         .then(result =>{
           this.store.cardFilm = result.data.results;
           console.log(this.store.cardFilm);
         })
-      }
+      },
+      getApiSeries(){
+        axios.get(this.store.apiUrl + 'tv',{
+          params: store.apiParams
+        })
+        .then(res =>{
+          this.store.cardSeries = res.data.results;
+          console.log(this.store.cardSeries);
+        })
+      },
+      startSearch(){
+        this.getApiMovies(),
+        this.getApiSeries()
+      }        
     },
     mounted(){
-      this.getApi()
-    },
+      this.startSearch
+    }
   }
 </script>
 
@@ -33,7 +48,7 @@ import Main from './components/Main.vue';
 
 <template>
   <body>
-    <Header/>
+    <Header @startSearch="startSearch"/>
     <Main/>
   </body>
 </template>
