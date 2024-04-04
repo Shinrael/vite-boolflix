@@ -8,6 +8,17 @@
       original_language : String,
       rate : Number,
       poster_path : String,
+    },
+    computed:{
+      languageFlag(){
+        if (this.original_language === 'en') {
+        return '../../../public/img/en.png';
+      } else if (this.original_language === 'it') {
+        return '../../../public/img/it.png';
+      } else {
+        return null;
+      }
+      }
     }
   }
 </script>
@@ -23,7 +34,12 @@
         <div class="flip-card-back">
           <h1>{{ title }} {{ name }} </h1> 
           <h3>{{ originalTitle }} {{ original_name }}</h3>
-          <p>{{ original_language }}</p> 
+          <div v-if="languageFlag">
+            <img :src="languageFlag" alt="Bandiera lingua">
+          </div>
+          <div v-else>
+            <p>{{ original_language }}</p> 
+          </div>
           <p>{{ rate }}</p>
         </div>
       </div>
@@ -64,6 +80,10 @@
   background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
+  img{
+    width: 50px;
+    height: 30px;
+  }
   }
   }
 }
