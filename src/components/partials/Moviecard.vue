@@ -13,11 +13,18 @@
       languageFlag(){
         if (this.original_language === 'en') {
         return '../../../public/img/en.png';
-      } else if (this.original_language === 'it') {
+        } else if (this.original_language === 'it') {
         return '../../../public/img/it.png';
-      } else {
+        } else {
         return null;
-      }
+        }
+      },
+      posterAlt(){
+        if (!this.poster_path || this.poster_path === 'null') {
+        return '../../../public/img/error.jpg';
+        }  else {
+        return null;
+        }
       },
       calculatedRate() {
       return Math.ceil(this.rate / 2);
@@ -35,7 +42,8 @@
     <div class="flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img :src="'https://image.tmdb.org/t/p/w300/' + poster_path" :alt="title">
+          <img v-if="posterAlt" :src="'../../../public/img/error.jpg'" :alt="title">
+          <img v-else :src="'https://image.tmdb.org/t/p/w300/' + poster_path" :alt="title">
         </div>
         <div class="flip-card-back">
           <h3>Titolo: {{ title }} {{ name }} </h3> 
